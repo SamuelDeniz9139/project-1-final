@@ -19,7 +19,7 @@ const badRequest = (request, response, params) => {
     message: 'A successful response!',
   };
   if (!params.valid || params.valid !== 'true') {
-    responseJSON.message = 'Both name and age are required.';
+    responseJSON.message = 'Both hat and nose are required.';
     return respondJSON(request, response, 400, responseJSON);
   }
   return respondJSON(request, response, 200, responseJSON);
@@ -32,21 +32,21 @@ const notFound = (request, response) => {
 };
 const addUser = (request, response, body) => {
   const responseJSON = {
-    message: 'Requires both name and age.',
+    message: 'Requires both hat and nose.',
   };
-  if (!body.age || !body.name) {
+  if (!body.nose||!body.hat) {
     responseJSON.message = 'Missing parameters.';
     return respondJSON(request, response, 400, responseJSON);
   }
   let responseCode = 204;
-  if (!users[body.name]) {
+  if (!users[body.hat]) {
     responseCode = 201;
-    users[body.name] = {};
+    users[body.hat] = {};
   }
-  users[body.name].name = body.name;
-  users[body.name].age = body.age;
+  users[body.hat].hat = body.hat;
+  users[body.hat].nose = body.nose;
   if (responseCode === 201) {
-    responseJSON.message = 'Successfully created user.';
+    responseJSON.message = 'Successfully created snowman.';
     return respondJSON(request, response, 201, responseJSON);
   }
   return respondJSONMeta(request, response, responseCode);

@@ -47,9 +47,9 @@
     const sendPost = async (snowForm) => {
       const nameAction = snowForm.getAttribute('action');
       const nameMethod = snowForm.getAttribute('method');
-      const nameField = snowForm.querySelector('#nameField');
-      const ageField = snowForm.querySelector('#ageField');
-      const formData = `name=${nameField.value}&age=${ageField.value}`;
+      const hatField = snowForm.querySelector('#hatField');
+      const noseField = snowForm.querySelector('#noseField');
+      const formData = `name=${hatField.value}&age=${noseField.value}`;
       let response = await fetch(nameAction, {
         method: nameMethod,
         headers: {
@@ -84,10 +84,21 @@
   <section id="top">
     <h2>Create a Virtual Snowman!</h2>
     <form id="snowForm" action="/addUser" method="post">
-      <label for="name">Name: </label>
-      <input id="nameField" type="text" name="name" />
-      <label for="age">Age: </label>
-      <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
+      <label for="hat">Hat: </label>
+      <select id='hatField' name="hat">
+        <option value='none'>None</option>
+        <option value='topHat'>Top Hat</option>
+        <option value='partyHat'>Party Hat</option>
+        <option value='fedora'>Fedora</option>
+        <option value='bucket'>Bucket</option>
+      </select>
+      <label for="nose">Hat: </label>
+      <select id='noseField' name="nose">
+        <option value='none'>None</option>
+        <option value='carrot'>Carrot</option>
+        <option value='bottleCap'>Bottle Cap</option>
+        <option value='rock'>Rock</option>
+      </select>
       <input type="submit" value="Add User" />
     </form>
     <form id="userForm" action="/getUsers" method="get">
