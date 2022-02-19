@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>API Assignment 2</title>
+  <title>Project 1</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
   <script>
     const handleResponse = async (response, parseResponse) => {
@@ -63,6 +63,7 @@
     const init = () => {
       const nameForm = document.querySelector('#nameForm');
       const userForm = document.querySelector('#userForm');
+      const delForm = document.querySelector('#deleteForm');
       const getUsers = (e) => {
         e.preventDefault();
         requestUpdate(userForm);
@@ -73,15 +74,21 @@
         sendPost(nameForm);
         return false;
       }
+      const deleteUsers = (e) => {
+        e.preventDefault();
+        sendPost(delForm);
+        return false;
+      }
       nameForm.addEventListener('submit', addUser);
       userForm.addEventListener('submit', getUsers);
+      delForm.addEventListener('submit', deleteUsers);
     };
     window.onload = init;
   </script>
 </head>
 <body>
   <section id="top">
-    <h3>POST Status Code Tests</h3>
+    <h2>POST Status Code Tests</h2>
     <form id="nameForm" action="/addUser" method="post">
       <label for="name">Name: </label>
       <input id="nameField" type="text" name="name" />
@@ -99,6 +106,9 @@
         <option value="head">HEAD</option>
       </select>
       <input type="submit" value="Get User"/>
+    </form>
+    <form id="deleteForm" action="/getUsers" method="post">
+      <input type="submit" value="Delete All Users"/>
     </form>
   </section>
   <section id="content">
