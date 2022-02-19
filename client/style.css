@@ -21,7 +21,6 @@ html, body {
 h2, h4{
   font-family: Snowes;
   color:silver;
-  font-size: 50px;
 }
 input[type=submit] {
   background-color: aqua;
