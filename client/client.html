@@ -72,12 +72,12 @@
         requestUpdate(userForm);
         return false;
       }
-      const addSnowman = (e) => {
+      const makeSnowman = (e) => {
         e.preventDefault();
         sendPost(snowForm);
         return false;
       }
-      snowForm.addEventListener('submit', addSnowman);
+      snowForm.addEventListener('submit', makeSnowman);
       userForm.addEventListener('submit', getUsers);
     };
     window.onload = init;

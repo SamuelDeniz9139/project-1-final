@@ -21,8 +21,8 @@ const parseBody = (request, response, handler) => {
   });
 };
 const handlePost = (request, response, parsedUrl) => {
-  if (parsedUrl.pathname === '/addUser') {
-    parseBody(request, response, jsonHandler.addUser);
+  if (parsedUrl.pathname === '/makeSnowman') {
+    parseBody(request, response, jsonHandler.makeSnowman);
   }
 };
 const handleGet = (request, response, parsedUrl) => {
