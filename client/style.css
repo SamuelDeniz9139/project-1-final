@@ -4,7 +4,7 @@
 }
 *{
   font-family: Tahoma;
-  color:grey;
+  color:aquamarine;
 }
 html, body {
   height: 100%;
@@ -26,9 +26,8 @@ h2, h4{
   font-family: Snowes;
 }
 input[type=submit] {
-  background-color: aqua;
+  background-color: silver;
   border: none;
-  color: silver;
   padding: 5px;
   text-align: center;
   text-decoration: none;
