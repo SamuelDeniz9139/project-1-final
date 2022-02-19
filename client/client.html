@@ -87,7 +87,7 @@
     <h2>Create a Virtual Snowman!</h2>
     <form id="snowForm" action="/makeSnowman" method="post">
       <label for="name">Name: </label>
-      <input id="nameField" type="text" name="name" /><br>
+      <input id="nameField" type="text" name="name" /><br><br>
       <label for="hat">Hat: </label>
       <select id='hatField' name="hat">
         <option value='none'>None</option>
@@ -96,6 +96,14 @@
         <option value='fedora'>Fedora</option>
         <option value='bucket'>Bucket</option>
       </select>
+      <label for="eye">Eyes: </label>
+      <select id='eyeField' name="eye">
+        <option value='none'>None</option>
+        <option value='rocks'>Rocks</option>
+        <option value='bottleCaps'>Bottle Caps</option>
+        <option value='grapes'>Grapes</option>
+        <option value='holes'>Holes</option>
+      </select><br>
       <label for="nose">Nose: </label>
       <select id='noseField' name="nose">
         <option value='none'>None</option>
@@ -108,14 +116,6 @@
         <option value='none'>None</option>
         <option value='snow'>Snow</option>
         <option value='sticks'>Sticks</option>
-      </select>
-      <label for="eye">Eyes: </label>
-      <select id='eyeField' name="eye">
-        <option value='none'>None</option>
-        <option value='rocks'>Rocks</option>
-        <option value='bottleCaps'>Bottle Caps</option>
-        <option value='grapes'>Grapes</option>
-        <option value='holes'>Holes</option>
       </select>
       <input type="submit" value="Add Snowman" />
     </form><br>
