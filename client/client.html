@@ -9,22 +9,22 @@
       const content = document.querySelector('#content');
       switch(response.status) {
         case 200:
-          content.innerHTML = `<h4>Success</h4>`;
+          content.innerHTML = `<h4>Here are your snowmen!</h4>`;
           break;
         case 201:
-          content.innerHTML = `<h4>Created</h4>`;
+          content.innerHTML = `<h4>Your snowman has been built.</h4>`;
           break;
         case 204:
-          content.innerHTML = `<h4>Updated</h4>`;
+          content.innerHTML = `<h4>A snowman by that name already exists,<br>so we updated it.</h4>`;
           break;
         case 400:
-          content.innerHTML = `<h4>Bad Request</h4>`;
+          content.innerHTML = `<h4>Your request failed.<br>No snowman was built.</h4>`;
           break;
         case 404:
-          content.innerHTML = `<h4>Not Found</h4>`;
+          content.innerHTML = `<h4>Not found.</h4>`;
           break;
         default:
-          content.innerHTML = `Error code not implemented by client.`;
+          content.innerHTML = `<h4>Error code not implemented by client.</h4>`;
           break;
       }
       if(parseResponse) {
@@ -84,7 +84,7 @@
 </head>
 <body>
   <section id="top">
-    <h2>Create a Virtual Snowman!</h2>
+    <h2>Build Your Own Virtual Snowman!</h2>
     <form id="snowForm" action="/makeSnowman" method="post">
       <label for="name">Name: </label>
       <input id="nameField" type="text" name="name" /><br><br>

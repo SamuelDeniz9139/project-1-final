@@ -1,4 +1,5 @@
 const snowmen = {};
+let snowLength=0;
 const respondJSON = (request, response, status, object) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
   response.write(JSON.stringify(object));
@@ -48,6 +49,7 @@ const makeSnowman = (request, response, body) => {
   snowmen[body.name].arm = body.arm;
   if (responseCode === 201) {
     responseJSON.message = 'Successfully created snowman.';
+    snowLength++;
     return respondJSON(request, response, 201, responseJSON);
   }
   return respondJSONMeta(request, response, responseCode);
@@ -56,7 +58,14 @@ const getSnowmen = (request, response) => {
   const responseJSON = {
     snowmen,
   };
-  respondJSON(request, response, 200, responseJSON);
+  const noSnowmen={
+    message:"You haven't built any snowmen yet."
+  };
+  if(snowLength==0){
+    respondJSON(request, response, 200, noSnowmen);
+  } else {
+    respondJSON(request, response, 200, responseJSON);
+  }
 };
 module.exports = {
   success,
