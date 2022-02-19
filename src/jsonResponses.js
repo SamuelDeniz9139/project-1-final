@@ -32,16 +32,15 @@ const notFound = (request, response) => {
 };
 const addUser = (request, response, body) => {
   const responseJSON = {
-    message: 'Requires both hat and nose.',
+    message: 'Your snowman needs a name.',
   };
-  if (!body.nose||!body.hat) {
-    responseJSON.message = 'Missing parameters.';
+  if (!body.name) {
     return respondJSON(request, response, 400, responseJSON);
   }
   let responseCode = 204;
-  if (!users[body.hat]) {
+  if (!users[body.name]) {
     responseCode = 201;
-    users[body.hat] = {};
+    users[body.name] = {};
   }
   users[body.hat].hat = body.hat;
   users[body.hat].nose = body.nose;
