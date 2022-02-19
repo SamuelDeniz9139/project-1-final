@@ -85,12 +85,27 @@
 </head>
 <body>
   <section id="top">
-    <h2>Let's Build A Virtual Snowman!</h2>
-    <form id="snowForm" action="/makeSnowman" method="post">
+    <h2>Create a Virtual Snowman!</h2>
+    <form id="snowForm" action="/addUser" method="post">
       <label for="name">Name: </label>
       <input id="nameField" type="text" name="name" />
-      <label for="hat">Hat: </label>
+      <label for="hat">Hat Type: </label>
       <select id='hatField' name="hat">
+        <option value='none'>None</option>
+        <option value='topHat'>Top Hat</option>
+        <option value='partyHat'>Party Hat</option>
+        <option value='fedora'>Fedora</option>
+        <option value='bucket'>Bucket</option>
+      </select>
+      <label for="nose">Nose Type: </label>
+      <select id='noseField' name="nose">
+        <option value='none'>None</option>
+        <option value='carrot'>Carrot</option>
+        <option value='bottleCap'>Bottle Cap</option>
+        <option value='rock'>Rock</option>
+      </select>
+      <label for="arm">Arms: </label>
+      <select id='armField' name="hat">
         <option value='none'>None</option>
         <option value='topHat'>Top Hat</option>
         <option value='partyHat'>Party Hat</option>
@@ -100,25 +115,11 @@
       <label for="eye">Eyes: </label>
       <select id='eyeField' name="eye">
         <option value='none'>None</option>
-        <option value='rock'>Rocks</option>
-        <option value='bottleCap'>Bottle Caps</option>
-        <option value='poke'>Poke In</option>
-        <option value='grape'>Grapes</option>
-      </select>
-      <label for="nose">Nose: </label>
-      <select id='noseField' name="nose">
-        <option value='none'>None</option>
         <option value='carrot'>Carrot</option>
         <option value='bottleCap'>Bottle Cap</option>
         <option value='rock'>Rock</option>
       </select>
-      <label for="arm">Arms: </label>
-      <select id='armField' name="arm">
-        <option value='none'>None</option>
-        <option value='snow'>Snow</option>
-        <option value='stick'>Sticks</option>
-      </select>
-      <input type="submit" value="Create Your Snowman" />
+      <input type="submit" value="Add Snowman" />
     </form>
     <form id="userForm" action="/getUsers" method="get">
       <select id='urlField'>

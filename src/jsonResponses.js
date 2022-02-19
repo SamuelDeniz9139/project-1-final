@@ -1,4 +1,4 @@
-const users = {};
+const snowmen = {};
 const respondJSON = (request, response, status, object) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
   response.write(JSON.stringify(object));
@@ -38,14 +38,14 @@ const makeSnowman = (request, response, body) => {
     return respondJSON(request, response, 400, responseJSON);
   }
   let responseCode = 204;
-  if (!users[body.name]) {
+  if (!snowmen[body.name]) {
     responseCode = 201;
-    users[body.name] = {};
+    snowmen[body.name] = {};
   }
-  users[body.name].hat = body.hat;
-  users[body.name].eye = body.eye;
-  users[body.name].nose = body.nose;
-  users[body.name].arm = body.arm;
+  snowmen[body.name].hat = body.hat;
+  snowmen[body.name].eye = body.eye;
+  snowmen[body.name].nose = body.nose;
+  snowmen[body.name].arm = body.arm;
   if (responseCode === 201) {
     responseJSON.message = 'Successfully created snowman.';
     return respondJSON(request, response, 201, responseJSON);
@@ -54,7 +54,7 @@ const makeSnowman = (request, response, body) => {
 };
 const getUsers = (request, response) => {
   const responseJSON = {
-    users,
+    snowmen,
   };
   respondJSON(request, response, 200, responseJSON);
 };
