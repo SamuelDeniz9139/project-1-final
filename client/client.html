@@ -108,6 +108,8 @@
       <input type="submit" value="Get User"/>
     </form>
     <form id="deleteForm" action="/deleteUsers" method="post">
+      <input type="hidden" id="nameField" name="name" value="delete"/>
+      <input type="hidden" id="ageField" name="age" value="users"/>
       <input type="submit" value="Delete All Users"/>
     </form>
   </section>
