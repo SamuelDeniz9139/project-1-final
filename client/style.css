@@ -21,7 +21,7 @@ h2{
   color:silver;
   font-size: 50px;
 }
-.button {
+input[type=submit] {
   background-color: aqua;
   border: none;
   color: white;
