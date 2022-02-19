@@ -27,6 +27,7 @@ h2, h4{
 }
 input[type=submit] {
   background-color: silver;
+  border:none;
   color:aquamarine;
   padding: 7px;
   text-align: center;
@@ -35,5 +36,5 @@ input[type=submit] {
   font-size: 12px;
 }
 input[type=submit]:hover {
-  color: skyblue;
+  background-color: grey;
 }
