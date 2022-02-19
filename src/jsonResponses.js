@@ -52,7 +52,7 @@ const makeSnowman = (request, response, body) => {
   }
   return respondJSONMeta(request, response, responseCode);
 };
-const getUsers = (request, response) => {
+const getSnowmen = (request, response) => {
   const responseJSON = {
     snowmen,
   };
@@ -62,6 +62,6 @@ module.exports = {
   success,
   badRequest,
   notFound,
-  getUsers,
+  getSnowmen,
   makeSnowman,
 };

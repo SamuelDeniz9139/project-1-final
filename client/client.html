@@ -65,10 +65,10 @@
     };
     const init = () => {
       const snowForm = document.querySelector('#snowForm');
-      const userForm = document.querySelector('#userForm');
-      const getUsers = (e) => {
+      const viewForm = document.querySelector('#viewForm');
+      const getSnowmen = (e) => {
         e.preventDefault();
-        requestUpdate(userForm);
+        requestUpdate(viewForm);
         return false;
       }
       const makeSnowman = (e) => {
@@ -77,7 +77,7 @@
         return false;
       }
       snowForm.addEventListener('submit', makeSnowman);
-      userForm.addEventListener('submit', getUsers);
+      viewForm.addEventListener('submit', getSnowmen);
     };
     window.onload = init;
   </script>
@@ -118,21 +118,22 @@
         <option value='holes'>Holes</option>
       </select>
       <input type="submit" value="Add Snowman" />
-    </form>
-    <form id="userForm" action="/getUsers" method="get">
+    </form><br>
+    <form id="viewForm" action="/getSnowmen" method="get">
       <select id='urlField'>
-        <option value='/getUsers'>/getUsers</option>
+        <option value='/getSnowmen'>/getSnowmen</option>
         <option value='/notReal'>/notReal</option>
       </select>
       <select id="methodSelect">
         <option value="get">GET</option>
         <option value="head">HEAD</option>
       </select>
-      <input type="submit" value="Get User"/>
+      <input type="submit" value="View Snowman Data"/>
     </form>
   </section>
   <section id="content">
+    <canvas id="snowMan" width="500" height="500"></canvas>
   </section>
-  <canvas id="snowMan" width="500" height="500"></canvas>
+  <script src="src/jsonResponses.js"></script>
 </body>
 </html>

@@ -2,6 +2,10 @@
   font-family: Snowes;
   src:url(fonts/Snowes.ttf);
 }
+*{
+  font-family: Tahoma;
+  color:grey;
+}
 html, body {
   height: 100%;
   width: 100%;
@@ -20,12 +24,11 @@ html, body {
 }
 h2, h4{
   font-family: Snowes;
-  color:silver;
 }
 input[type=submit] {
   background-color: aqua;
   border: none;
-  color: white;
+  color: silver;
   padding: 5px;
   text-align: center;
   text-decoration: none;
