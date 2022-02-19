@@ -36,6 +36,8 @@
     const requestUpdate = async (userForm) => {
       const url = userForm.querySelector('#urlField').value;
       const method = userForm.querySelector('#methodSelect').value;
+      const canvas=document.getElementById('snowMan');
+      const ctx=canvas.getContext('2d');
       let response = await fetch(url, {
         method,
         headers: {
@@ -43,6 +45,21 @@
         },
       });
       handleResponse(response, method === 'get');
+      ctx.fillStyle="white";
+      ctx.strokeStyle="snow";
+      ctx.beginPath();
+      ctx.arc(250, 235, 80, 0, 2*Math.PI, false);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(250, 375, 100, 0, 2*Math.PI, false);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.fillRect(0, 450, 500, 50);
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
     };
     const sendPost = async (snowForm) => {
       const snowAction = snowForm.getAttribute('action');
@@ -132,8 +149,7 @@
     </form>
   </section>
   <section id="content">
-    <canvas id="snowMan" width="500" height="500"></canvas>
   </section>
-  <script src="src/jsonResponses.js"></script>
+  <canvas id="snowMan" width="500" height="500"></canvas>
 </body>
 </html>

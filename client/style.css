@@ -38,3 +38,9 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: grey;
 }
+canvas {
+  background: #00008f;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: block;
+}

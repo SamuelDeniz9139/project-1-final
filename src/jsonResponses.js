@@ -1,5 +1,5 @@
 const snowmen = {};
-let snowLength=0;
+let snowLength = 0;
 const respondJSON = (request, response, status, object) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
   response.write(JSON.stringify(object));
@@ -56,12 +56,12 @@ const makeSnowman = (request, response, body) => {
 };
 const getSnowmen = (request, response) => {
   const responseJSON = {
-    snowmen,
+    snowmen
   };
-  const noSnowmen={
-    message:"You haven't built any snowmen yet."
+  const noSnowmen = {
+    message: "You haven't built any snowmen yet.",
   };
-  if(snowLength==0){
+  if (snowLength === 0) {
     respondJSON(request, response, 200, noSnowmen);
   } else {
     respondJSON(request, response, 200, responseJSON);
