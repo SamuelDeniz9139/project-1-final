@@ -45,13 +45,13 @@
       handleResponse(response, method === 'get');
     };
     const sendPost = async (snowForm) => {
-      const nameAction = snowForm.getAttribute('action');
-      const nameMethod = snowForm.getAttribute('method');
+      const snowAction = snowForm.getAttribute('action');
+      const snowMethod = snowForm.getAttribute('method');
       const hatField = snowForm.querySelector('#hatField');
       const noseField = snowForm.querySelector('#noseField');
-      const formData = `name=${hatField.value}&age=${noseField.value}`;
-      let response = await fetch(nameAction, {
-        method: nameMethod,
+      const formData = `hat=${hatField.value}&nose=${noseField.value}`;
+      let response = await fetch(snowAction, {
+        method: snowMethod,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json',
@@ -84,7 +84,7 @@
   <section id="top">
     <h2>Create a Virtual Snowman!</h2>
     <form id="snowForm" action="/addUser" method="post">
-      <label for="hat">Hat: </label>
+      <label for="hat">Hat Type: </label>
       <select id='hatField' name="hat">
         <option value='none'>None</option>
         <option value='topHat'>Top Hat</option>
@@ -92,7 +92,7 @@
         <option value='fedora'>Fedora</option>
         <option value='bucket'>Bucket</option>
       </select>
-      <label for="nose">Hat: </label>
+      <label for="nose">Nose Type: </label>
       <select id='noseField' name="nose">
         <option value='none'>None</option>
         <option value='carrot'>Carrot</option>

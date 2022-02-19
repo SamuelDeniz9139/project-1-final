@@ -62,5 +62,5 @@ module.exports = {
   badRequest,
   notFound,
   getUsers,
-  addUser
+  addUser,
 };
