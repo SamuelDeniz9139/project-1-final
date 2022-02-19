@@ -9,19 +9,19 @@
       const content = document.querySelector('#content');
       switch(response.status) {
         case 200:
-          content.innerHTML = `<b>Success</b>`;
+          content.innerHTML = `<h4>Success</h4>`;
           break;
         case 201:
-          content.innerHTML = `<b>Created</b>`;
+          content.innerHTML = `<h4>Created</h4>`;
           break;
         case 204:
-          content.innerHTML = `<b>Updated</b>`;
+          content.innerHTML = `<h4>Updated</h4>`;
           break;
         case 400:
-          content.innerHTML = `<b>Bad Request</b>`;
+          content.innerHTML = `<h4>Bad Request</h4>`;
           break;
         case 404:
-          content.innerHTML = `<b>Not Found</b>`;
+          content.innerHTML = `<h4>Not Found</h4>`;
           break;
         default:
           content.innerHTML = `Error code not implemented by client.`;
