@@ -30,7 +30,7 @@ const notFound = (request, response) => {
   };
   respondJSON(request, response, 404, responseJSON);
 };
-const makeSnowman = (request, response, body) => {
+const addUser = (request, response, body) => {
   const responseJSON = {
     message: 'Requires both name and age.',
   };
@@ -57,22 +57,10 @@ const getUsers = (request, response) => {
   };
   respondJSON(request, response, 200, responseJSON);
 };
-const deleteUsers = (request, response) => {
-  const responseJSON = {
-    message: 'Users deleted.',
-  };
-  users = {};
-  if (responseCode === 201) {
-    responseJSON.message = 'Successfully deleted users.';
-    return respondJSON(request, response, 201, responseJSON);
-  }
-  return respondJSONMeta(request, response, responseCode);
-};
 module.exports = {
   success,
   badRequest,
   notFound,
   getUsers,
-  makeSnowman,
-  deleteUsers
+  addUser
 };
