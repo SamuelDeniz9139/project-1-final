@@ -43,7 +43,9 @@ const addUser = (request, response, body) => {
     users[body.name] = {};
   }
   users[body.name].hat = body.hat;
+  users[body.name].eye = body.eye;
   users[body.name].nose = body.nose;
+  users[body.name].arm = body.arm;
   if (responseCode === 201) {
     responseJSON.message = 'Successfully created snowman.';
     return respondJSON(request, response, 201, responseJSON);

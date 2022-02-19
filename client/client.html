@@ -49,8 +49,10 @@
       const snowMethod = snowForm.getAttribute('method');
       const nameField = snowForm.querySelector('#nameField');
       const hatField = snowForm.querySelector('#hatField');
+      const eyeField = snowForm.querySelector('#eyeField');
       const noseField = snowForm.querySelector('#noseField');
-      const formData = `name=${nameField.value}&hat=${hatField.value}&nose=${noseField.value}`;
+      const armField = snowForm.querySelector('#armField');
+      const formData = `name=${nameField.value}&hat=${hatField.value}&eye=${eyeField.value}&nose=${noseField.value}&arm=${armField.value}`;
       let response = await fetch(snowAction, {
         method: snowMethod,
         headers: {
@@ -87,7 +89,7 @@
     <form id="snowForm" action="/addUser" method="post">
       <label for="name">Name: </label>
       <input id="nameField" type="text" name="name" />
-      <label for="hat">Hat Type: </label>
+      <label for="hat">Hat: </label>
       <select id='hatField' name="hat">
         <option value='none'>None</option>
         <option value='topHat'>Top Hat</option>
@@ -95,12 +97,26 @@
         <option value='fedora'>Fedora</option>
         <option value='bucket'>Bucket</option>
       </select>
-      <label for="nose">Nose Type: </label>
+      <label for="eye">Eyes: </label>
+      <select id='eyeField' name="eye">
+        <option value='none'>None</option>
+        <option value='rock'>Rocks</option>
+        <option value='bottleCap'>Bottle Caps</option>
+        <option value='poke'>Poke In</option>
+        <option value='grape'>Grapes</option>
+      </select>
+      <label for="nose">Nose: </label>
       <select id='noseField' name="nose">
         <option value='none'>None</option>
         <option value='carrot'>Carrot</option>
         <option value='bottleCap'>Bottle Cap</option>
         <option value='rock'>Rock</option>
+      </select>
+      <label for="arm">Arms: </label>
+      <select id='armField' name="arm">
+        <option value='none'>None</option>
+        <option value='snow'>Snow</option>
+        <option value='stick'>Sticks</option>
       </select>
       <input type="submit" value="Add User" />
     </form>
