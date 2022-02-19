@@ -85,8 +85,8 @@
 </head>
 <body>
   <section id="top">
-    <h2>Create a Virtual Snowman!</h2>
-    <form id="snowForm" action="/addUser" method="post">
+    <h2>Let's Build A Virtual Snowman!</h2>
+    <form id="snowForm" action="/makeSnowman" method="post">
       <label for="name">Name: </label>
       <input id="nameField" type="text" name="name" />
       <label for="hat">Hat: </label>
@@ -118,7 +118,7 @@
         <option value='snow'>Snow</option>
         <option value='stick'>Sticks</option>
       </select>
-      <input type="submit" value="Add User" />
+      <input type="submit" value="Create Your Snowman" />
     </form>
     <form id="userForm" action="/getUsers" method="get">
       <select id='urlField'>

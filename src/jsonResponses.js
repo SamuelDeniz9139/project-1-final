@@ -30,7 +30,7 @@ const notFound = (request, response) => {
   };
   respondJSON(request, response, 404, responseJSON);
 };
-const addUser = (request, response, body) => {
+const makeSnowman = (request, response, body) => {
   const responseJSON = {
     message: 'Your snowman needs a name.',
   };
@@ -63,5 +63,5 @@ module.exports = {
   badRequest,
   notFound,
   getUsers,
-  addUser,
+  makeSnowman,
 };
