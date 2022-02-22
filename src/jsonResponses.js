@@ -9,22 +9,6 @@ const respondJSONMeta = (request, response, status) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
   response.end();
 };
-const success = (request, response) => {
-  const responseJSON = {
-    message: 'A successful response!',
-  };
-  respondJSON(request, response, 200, responseJSON);
-};
-const badRequest = (request, response, params) => {
-  const responseJSON = {
-    message: 'A successful response!',
-  };
-  if (!params.valid || params.valid !== 'true') {
-    responseJSON.message = 'Both hat and nose are required.';
-    return respondJSON(request, response, 400, responseJSON);
-  }
-  return respondJSON(request, response, 200, responseJSON);
-};
 const notFound = (request, response) => {
   const responseJSON = {
     message: "Couldn't find the page you were looking for.",
@@ -68,8 +52,6 @@ const getSnowmen = (request, response) => {
   }
 };
 module.exports = {
-  success,
-  badRequest,
   notFound,
   getSnowmen,
   makeSnowman,
