@@ -3,3 +3,4 @@
 chosen by the user and the names of the respective snowman. Since the
 part types will always align with themselves, the type of part isn't
 as important to get.
+- Added scarf and buttons as changable options for the snowman.

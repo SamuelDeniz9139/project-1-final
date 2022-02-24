@@ -30,7 +30,9 @@ const makeSnowman = (request, response, body) => {
   snowmen[body.name].hat = body.hat;
   snowmen[body.name].eye = body.eye;
   snowmen[body.name].nose = body.nose;
+  snowmen[body.name].scarf = body.scarf;
   snowmen[body.name].arm = body.arm;
+  snowmen[body.name].buttons = body.buttons;
   if (responseCode === 201) {
     responseJSON.message = 'Successfully created snowman.';
     snowLength++;

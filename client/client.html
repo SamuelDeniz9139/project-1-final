@@ -15,16 +15,16 @@
           content.innerHTML = `<h4>Your snowman has been built.</h4>`;
           break;
         case 204:
-          content.innerHTML = `<h4>A snowman by that name already exists,<br>so we updated it.</h4>`;
+          content.innerHTML = `<h4>Updated snowman.</h4>`;
           break;
         case 400:
-          content.innerHTML = `<h4>Your request failed.<br>No snowman was built.</h4>`;
+          content.innerHTML = `<h4>Your request failed.</h4>`;
           break;
         case 404:
           content.innerHTML = `<h4>Not found.</h4>`;
           break;
         default:
-          content.innerHTML = `<h4>Error code not implemented by client.</h4>`;
+          content.innerHTML = `<h4>Client has no such error code.</h4>`;
           break;
       }
       if(parseResponse) {
@@ -40,9 +40,10 @@
           let str3 = JSON.stringify(val2[pars]);
           let obj3 = JSON.parse(str3);
           let things = Object.values(obj3);
-          vals.push(JSON.stringify(things));
+          let objs = JSON.stringify(things);
+          vals.push(objs.slice(1,objs.length-1));
         }
-        buildSnowman(JSON.stringify(names), vals);
+        buildSnowman(names, vals);
       }
     };
     const buildSnowman = (names, vals) => {
@@ -80,8 +81,10 @@
       const hatField = snowForm.querySelector('#hatField');
       const eyeField = snowForm.querySelector('#eyeField');
       const noseField = snowForm.querySelector('#noseField');
+      const scarField = snowForm.querySelector('#scarField');
       const armField = snowForm.querySelector('#armField');
-      const formData = `name=${nameField.value}&hat=${hatField.value}&eye=${eyeField.value}&nose=${noseField.value}&arm=${armField.value}`;
+      const buttField = snowForm.querySelector('#buttField');
+      const formData = `name=${nameField.value}&hat=${hatField.value}&eye=${eyeField.value}&nose=${noseField.value}&scarf=${scarField.value}&arm=${armField.value}&buttons=${buttField.value}`;
       let response = await fetch(snowAction, {
         method: snowMethod,
         headers: {
@@ -132,19 +135,34 @@
         <option value='bottleCaps'>Bottle Caps</option>
         <option value='grapes'>Grapes</option>
         <option value='holes'>Holes</option>
-      </select><br><br>
+      </select>
       <label for="nose">Nose: </label>
       <select id='noseField' name="nose">
         <option value='none'>None</option>
         <option value='carrot'>Carrot</option>
         <option value='bottleCap'>Bottle Cap</option>
         <option value='rock'>Rock</option>
+      </select><br><br>
+      <label for="scarf">Scarf Color: </label>
+      <select id='scarField' name="scarf">
+        <option value='none'>None</option>
+        <option value='red'>Red</option>
+        <option value='yellow'>Yellow</option>
+        <option value='blue'>Blue</option>
       </select>
       <label for="arm">Arms: </label>
       <select id='armField' name="hat">
         <option value='none'>None</option>
         <option value='snow'>Snow</option>
         <option value='sticks'>Sticks</option>
+      </select>
+      <label for="buttons">Buttons: </label>
+      <select id='buttField' name="buttons">
+        <option value='none'>None</option>
+        <option value='rocks'>Rocks</option>
+        <option value='bottleCaps'>Bottle Caps</option>
+        <option value='grapes'>Grapes</option>
+        <option value='holes'>Holes</option>
       </select><br><br>
       <input type="submit" value="Add Snowman" />
     </form><br>
