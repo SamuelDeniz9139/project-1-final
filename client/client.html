@@ -29,11 +29,23 @@
       }
       if(parseResponse) {
         let obj = await response.json();
-        let jsonString = JSON.stringify(obj);
-        content.innerHTML += `<p>${jsonString}</p>`;
+        let vals = [];
+        let val1 = Object.values(obj);
+        let str1 = JSON.stringify(val1);
+        let str2 = str1.slice(1,str1.length-1);
+        let obj2 = JSON.parse(str2);
+        let names = Object.keys(obj2);
+        let val2 = Object.values(obj2);
+        for(let pars=0;pars<val2.length;pars++){
+          let str3 = JSON.stringify(val2[pars]);
+          let obj3 = JSON.parse(str3);
+          let things = Object.values(obj3);
+          vals.push(JSON.stringify(things));
+        }
+        buildSnowman(JSON.stringify(names), vals);
       }
     };
-    const buildSnowman = () => {
+    const buildSnowman = (names, vals) => {
       const canvas=document.getElementById('snowMan');
       const ctx=canvas.getContext('2d');
       ctx.fillStyle="white";
@@ -60,7 +72,6 @@
         },
       });
       handleResponse(response, method === 'get');
-      buildSnowman();
     };
     const sendPost = async (snowForm) => {
       const snowAction = snowForm.getAttribute('action');

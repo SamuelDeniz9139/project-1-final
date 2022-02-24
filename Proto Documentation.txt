@@ -1,35 +1,5 @@
-- This program is intended to be kind of like a virtual avatar maker,
-allowing users to create their own virtual snowmen that they can share with
-anyone on the Web.
-- The API stores the choices that the user picks from the dropdown menus
-that determine the look of their virtual snowman, including its hat, eyes,
-nose, and arms. I also plan to add a scarf option later on with a color that
-can be picked from a slider or something. The snowman must also have a name.
-- The prototype has the basic API complete, as it's mostly the same as API
-Assignment 2 with some more variables. It also shows a blank snowman when
-asked for the API data, and the dropdown menus work like the ones that
-determine the HEAD requests.
-- I plan to have the snowman appear differently based on what the API data
-contains. For example, if the user selected a carrot nose, the snowman avatar
-would have a nose that resembled a carrot. Additionally, if there are multiple
-snowmen stored in the API, I'd want either a pair of buttons or a dropdown
-menu that lets users scroll through all of the snowman designs stored in the
-API. Finally, I would want to change "getUsers" (now getSnowmen) so that it
-displays the snowman based on the values stored in the API rather than the
-raw API data like it does now.
-- My "above and beyond" ideas include background music, more options to make
-the snowmen unique, enhanced visuals, an embedded font that I have in the
-files but failed to implement in the prototype, and a random option for each
-snowman piece. I doubt that I'll be able to implement all of them in the
-alloted time, though.
-- I got the canvas code that draws the blank snowman from Codeburst, and
-some of the code in style/css comes from W3Schools, my HTML/CSS/Javascript
-tutorial site of choice.
-
-Endpoint URL: https://sam-deniz-project-1.herokuapp.com/getSnowmen
-Supports: GET, HEAD
-Query params: name (identifies snowman), hat, nose, eye, arm (the different
-options that are selected for the snowman)
-Description: This endpoint contains the different pieces of the snowman
-that the user selected on the main page.
-Return type: JSON
+2/24/2022:
+- Added code in handleResponse that gets the values of the snowman parts
+chosen by the user and the names of the respective snowman. Since the
+part types will always align with themselves, the type of part isn't
+as important to get.
