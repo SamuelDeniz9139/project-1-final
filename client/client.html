@@ -43,20 +43,49 @@
           let objs = JSON.stringify(things);
           vals.push(objs.slice(1,objs.length-1));
         }
-        buildSnowman(names, vals);
+        if(vals.length!=0){
+          content.innerHTML = "<h4>Here's "+names[0]+"! "+vals[0]+"</h4>";
+          buildSnowman(names, vals);
+        }
       }
     };
     const buildSnowman = (names, vals) => {
       const canvas=document.getElementById('snowMan');
       const ctx=canvas.getContext('2d');
+      let varibs=vals[0].split(",")
+      console.log(varibs);
       ctx.fillStyle="white";
       ctx.strokeStyle="snow";
-      for(let ball=0;ball<2;ball++){
+      //draws body
+      ctx.beginPath();
+      ctx.arc(250, 360, 100, 0, 2*Math.PI, false);
+      ctx.fill();
+      ctx.stroke();
+      //draws scarf
+      if(varibs[3]!="none"){
+        ctx.save();
+        ctx.fillStyle=varibs[3].slice(1,varibs[3].length-1);
+        ctx.strokeStyle=varibs[3].slice(1,varibs[3].length-1);
+        ctx.scale(1, 0.7);
         ctx.beginPath();
-        ctx.arc(250, 235+(140*ball), 80+(20*ball), 0, 2*Math.PI, false);
+        ctx.arc(250, 400, 90, 0, 2*Math.PI, false);
         ctx.fill();
         ctx.stroke();
+        ctx.restore();
       }
+      //draws head
+      ctx.fillStyle="white";
+      ctx.strokeStyle="snow";
+      ctx.beginPath();
+      ctx.arc(250, 220, 80, 0, 2*Math.PI, false);
+      ctx.fill();
+      ctx.stroke();
+      //draws hat
+      //draws eyes
+      //draws nose
+      //draws arms
+      //draws buttons
+      //draws ground
       ctx.beginPath();
       ctx.fillRect(0, 450, 500, 50);
       ctx.fill();
@@ -147,11 +176,15 @@
       <select id='scarField' name="scarf">
         <option value='none'>None</option>
         <option value='red'>Red</option>
+        <option value='orange'>Orange</option>
         <option value='yellow'>Yellow</option>
+        <option value='green'>Green</option>
         <option value='blue'>Blue</option>
+        <option value='purple'>Purple</option>
+        <option value='pink'>Pink</option>
       </select>
       <label for="arm">Arms: </label>
-      <select id='armField' name="hat">
+      <select id='armField' name="arm">
         <option value='none'>None</option>
         <option value='snow'>Snow</option>
         <option value='sticks'>Sticks</option>
@@ -181,5 +214,13 @@
   <section id="content">
   </section>
   <canvas id="snowMan" width="500" height="500"></canvas>
+  <img src="images/partyHat.png" alt="woot">
+  <img src="images/fedora.png" alt="m'lady">
+  <img src="images/topHat.png" alt="top hat">
+  <img src="images/bucket.png" alt="kicked">
+  <img src="images/carrot.png" alt="sup doc">
+  <img src="images/bottleCap.png" alt="bepis">
+  <img src="images/grape.png" alt="caesar">
+  <img src="images/rock.png" alt="stoned">
 </body>
 </html>
