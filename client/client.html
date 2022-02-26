@@ -112,14 +112,6 @@
       ctx.stroke();
       ctx.restore();
       ctx.save();
-      if(hat!="none"){
-        var hatImg=document.getElementById(hat);
-        var hatX=hatImg.getAttribute('data-x');
-        var hatY=hatImg.getAttribute('data-y');
-        ctx.drawImage(hatImg,hatX,hatY);
-      }
-      ctx.restore();
-      ctx.save();
       if(eye!='none'){//draws eyes
         var eyeImg=document.getElementById(eye);
         ctx.drawImage(eyeImg,205,200);
@@ -130,6 +122,14 @@
       if(nos!='none'){//draws nose
         var nosImg=document.getElementById(nos);
         ctx.drawImage(nosImg,240,230);
+      }
+      ctx.restore();
+      ctx.save();
+      if(hat!="none"){
+        var hatImg=document.getElementById(hat);
+        var hatX=hatImg.getAttribute('data-x');
+        var hatY=hatImg.getAttribute('data-y');
+        ctx.drawImage(hatImg,hatX,hatY);
       }
       ctx.restore();
     };
