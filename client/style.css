@@ -4,7 +4,7 @@
 }
 *{
   font-family: Tahoma;
-  color:grey;
+  color:#748fe4;
 }
 html, body {
   height: 100%;
@@ -22,8 +22,12 @@ html, body {
   font-size: 2em;
   text-align: center;
 }
-h2, h4{
+h4{
+  font-size: 40px;
+}
+h1{
   font-family: Snowes;
+  font-size: 80px;
 }
 .pic{
   display: none;
@@ -44,6 +48,6 @@ input[type=submit]:hover {
 canvas {
   background: #008faf;
   margin: 0 auto;
-  margin-bottom: 1rem;
+  margin-bottom: 50px;
   display: block;
 }

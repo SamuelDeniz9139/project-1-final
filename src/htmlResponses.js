@@ -21,8 +21,12 @@ const getCSS = (request, response) => {
 const getImage = (request, response, img) => {
   serveFile(response, fs.readFileSync(`${__dirname}/../client${img}`), 'image/png');
 };
+const getFont = (request, response, font) => {
+  serveFile(response, fs.readFileSync(`${__dirname}/../client${font}`), 'font/ttf');
+};
 module.exports = {
   getIndex,
   getCSS,
-  getImage
+  getImage,
+  getFont
 };

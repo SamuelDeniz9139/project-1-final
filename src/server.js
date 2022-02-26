@@ -31,6 +31,8 @@ const handleGet = (request, response, parsedUrl) => {
     htmlHandler.getCSS(request, response);
   } else if(url.includes('/images')){
     htmlHandler.getImage(request,response,url);
+  } else if(url.includes('/fonts')){
+    htmlHandler.getFont(request,response,url);
   } else if (url === '/getSnowmen') {
     jsonHandler.getSnowmen(request, response);
   } else {
