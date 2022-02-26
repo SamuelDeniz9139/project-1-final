@@ -26,9 +26,12 @@ const handlePost = (request, response, parsedUrl) => {
   }
 };
 const handleGet = (request, response, parsedUrl) => {
-  if (parsedUrl.pathname === '/style.css') {
+  let url=parsedUrl.pathname;
+  if (url === '/style.css') {
     htmlHandler.getCSS(request, response);
-  } else if (parsedUrl.pathname === '/getSnowmen') {
+  } else if(url.includes('/images')){
+    htmlHandler.getImage(request,response,url);
+  } else if (url === '/getSnowmen') {
     jsonHandler.getSnowmen(request, response);
   } else {
     htmlHandler.getIndex(request, response);

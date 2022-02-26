@@ -18,7 +18,11 @@ const getIndex = (request, response) => {
 const getCSS = (request, response) => {
   serveFile(response, css, 'text/css');
 };
+const getImage = (request, response, img) => {
+  serveFile(response, fs.readFileSync(`${__dirname}/../client${img}`), 'image/png');
+};
 module.exports = {
   getIndex,
   getCSS,
+  getImage
 };

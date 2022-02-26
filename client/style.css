@@ -25,6 +25,9 @@ html, body {
 h2, h4{
   font-family: Snowes;
 }
+.pic{
+  display: none;
+}
 input[type=submit] {
   background-color: silver;
   border:none;
