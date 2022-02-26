@@ -8,4 +8,5 @@ as important to get.
 2/26/2022:
 - Created custom images for most of the different parts that can be worn
 by the snowman. They are read in by the main page.
-- Made a special function to make the scarf color display.
+- Made a special function to make the scarf color display. If the scarf
+color was set to "none", no scarf will appear on the snowman.
