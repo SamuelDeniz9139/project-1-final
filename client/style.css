@@ -4,7 +4,7 @@
 }
 *{
   font-family: Tahoma;
-  color:#748fe4;
+  color:#00cfdf;
 }
 html, body {
   height: 100%;
@@ -29,24 +29,23 @@ h1{
   font-family: Snowes;
   font-size: 80px;
 }
-.pic{
+.hid{
   display: none;
 }
-input[type=submit] {
-  background-color: silver;
-  border:none;
-  color:aquamarine;
+input[type=submit], #prevButton{
+  background-color: snow;
+  border: 1px #00cfdf;
   padding: 5px;
   text-align: center;
   display: inline-block;
   border-radius: 8px;
   font-size: 12px;
 }
-input[type=submit]:hover {
-  background-color: grey;
+input[type=submit]:hover, #prevButton:hover {
+  background-color: lightgray;
 }
 canvas {
-  background: #008faf;
+  background: #00cfdf;
   margin: 0 auto;
   margin-bottom: 50px;
   display: block;

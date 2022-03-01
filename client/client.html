@@ -4,58 +4,18 @@
   <title>Project 1</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
   <script>
-    const handleResponse = async (response, parseResponse) => {
-      const getHead = document.querySelector('#methodSelect').value;
-      const content = document.querySelector('#content');
-      let vals = [];
-      switch(response.status) {
-        case 200:
-          content.innerHTML = `<h4>Here are your snowmen!</h4>`;
-          break;
-        case 201:
-          content.innerHTML = `<h4>Your snowman has been built.</h4>`;
-          break;
-        case 204:
-          content.innerHTML = `<h4>Updated snowman.</h4>`;
-          break;
-        case 400:
-          content.innerHTML = `<h4>Your request failed. Maybe you forgot to name it?</h4>`;
-          break;
-        case 404:
-          content.innerHTML = `<h4>Not found.</h4>`;
-          break;
-        default:
-          content.innerHTML = `<h4>Client has no such error code.</h4>`;
-          break;
-      }
-      if(parseResponse) {//gets snowman data
-        let obj = await response.json();
-        let val1 = Object.values(obj);
-        let str1 = JSON.stringify(val1);
-        let str2 = str1.slice(1,str1.length-1);
-        let obj2 = JSON.parse(str2);
-        let names = Object.keys(obj2);
-        let val2 = Object.values(obj2);
-        for(let pars=0;pars<val2.length;pars++){
-          let str3 = JSON.stringify(val2[pars]);
-          let obj3 = JSON.parse(str3);
-          let things = Object.values(obj3);
-          let objs = JSON.stringify(things);
-          vals.push(objs.slice(1,objs.length-1));
-        }
-        if(vals.length!=0){
-          content.innerHTML = "<h4>This snowman's name is "+names[names.length-1]+"!</h4>";
-          buildSnowman(names, vals);
-        }
-      }
-    };
-    const buildSnowman = (names, vals) => {
+    var snowDex = 0;
+    var snowNames = [];
+    var snowVals = [];
+    const buildSnowman = (name, vals) => {
       const canvas=document.getElementById('snowMan');
+      document.querySelector('#content').innerHTML = "<h4>This snowman's name is "+name+"!</h4>";
+      canvas.classList.remove("hid");
       const ctx=canvas.getContext('2d');
-      let varibs=vals[names.length-1].split(",")
+      let varibs=vals.split(",")
       ctx.beginPath();
       ctx.rect(0, 0, 500, 500);
-      ctx.fillStyle="#008faf";
+      ctx.fillStyle="#00cfdf";
       ctx.fill();
       ctx.fillStyle="white";
       ctx.strokeStyle="snow";
@@ -132,6 +92,64 @@
         ctx.drawImage(hatImg,hatX,hatY);
       }
       ctx.restore();
+    };
+    const prevSnowman = () =>{
+      snowDex -=1;
+      if (snowDex < 0){
+        snowDex=snowVals.length-1;
+      }
+      buildSnowman(snowNames[snowDex],snowVals[snowDex]);
+    };
+    const handleResponse = async (response, parseResponse) => {
+      const getHead = document.querySelector('#methodSelect').value;
+      const content = document.querySelector('#content');
+      let vals = [];
+      switch(response.status) {
+        case 200:
+          content.innerHTML = `<h4>Here are your snowmen!</h4>`;
+          break;
+        case 201:
+          content.innerHTML = `<h4>Your snowman has been built.</h4>`;
+          document.getElementById("viewForm").classList.remove("hid");
+          break;
+        case 204:
+          content.innerHTML = `<h4>Updated snowman.</h4>`;
+          document.getElementById("viewForm").classList.remove("hid");
+          break;
+        case 400:
+          content.innerHTML = `<h4>Your request failed. Maybe you forgot to name it?</h4>`;
+          break;
+        case 404:
+          content.innerHTML = `<h4>Not found.</h4>`;
+          break;
+        default:
+          content.innerHTML = `<h4>Client has no such error code.</h4>`;
+          break;
+      }
+      if(parseResponse) {//gets snowman data
+        let obj = await response.json();
+        let val1 = Object.values(obj);
+        let str1 = JSON.stringify(val1);
+        let obj2 = JSON.parse(str1.slice(1,str1.length-1));
+        let names = Object.keys(obj2);
+        let val2 = Object.values(obj2);
+        for(let pars=0;pars<val2.length;pars++){
+          let obj3 = JSON.parse(JSON.stringify(val2[pars]));
+          let things = Object.values(obj3);
+          let objs = JSON.stringify(things);
+          vals.push(objs.slice(1,objs.length-1));
+        }
+        snowNames=names;
+        snowVals=vals;
+        if(vals.length!=0){
+          snowDex = names.length-1;
+          buildSnowman(names[snowDex], vals[snowDex]);
+        }
+        if(snowDex>0){
+          document.getElementById("prevButton").classList.remove("hid");
+          document.getElementById("prevButton").addEventListener("click",prevSnowman);
+        }
+      }
     };
     const requestUpdate = async (userForm) => {
       const url = userForm.querySelector('#urlField').value;
@@ -238,19 +256,19 @@
       </select><br><br>
       <input type="submit" value="Add or Update Snowman" />
     </form><br>
-    <img class="pic" id="partyHat" data-x='205' data-y='5' src="images/partyHat.png" alt="woot">
-    <img class="pic" id="fedora" data-x='170' data-y='80' src="images/fedora.png" alt="m'lady">
-    <img class="pic" id="topHat" data-x='170' data-y='0' src="images/topHat.png" alt="top hat">
-    <img class="pic" id="bucket" data-x='160' data-y='40' src="images/bucket.png" alt="kicked">
-    <img class="pic" id="leftsnow" data-x='120' data-y='280' src="images/leftsnow.png" alt="too cold">
-    <img class="pic" id="rightsnow" data-x='280' data-y='280' src="images/rightsnow.png" alt="too cold">
-    <img class="pic" id="leftstick" data-x='50' data-y='250' src="images/leftstick.png" alt="sticky">
-    <img class="pic" id="rightstick" data-x='300' data-y='250' src="images/rightstick.png" alt="sticky">
-    <img class="pic" id="carrot" src="images/carrot.png" alt="sup doc">
-    <img class="pic" id="bottleCap" src="images/bottleCap.png" alt="bepis">
-    <img class="pic" id="grape" src="images/grape.png" alt="caesar">
-    <img class="pic" id="rock" src="images/rock.png" alt="stoned">
-    <form id="viewForm" action="/getSnowmen" method="get">
+    <img class="hid" id="partyHat" data-x='205' data-y='5' src="images/partyHat.png" alt="woot">
+    <img class="hid" id="fedora" data-x='170' data-y='80' src="images/fedora.png" alt="m'lady">
+    <img class="hid" id="topHat" data-x='170' data-y='0' src="images/topHat.png" alt="top hat">
+    <img class="hid" id="bucket" data-x='160' data-y='40' src="images/bucket.png" alt="kicked">
+    <img class="hid" id="leftsnow" data-x='120' data-y='280' src="images/leftsnow.png" alt="too cold">
+    <img class="hid" id="rightsnow" data-x='280' data-y='280' src="images/rightsnow.png" alt="too cold">
+    <img class="hid" id="leftstick" data-x='40' data-y='250' src="images/leftstick.png" alt="sticky">
+    <img class="hid" id="rightstick" data-x='300' data-y='210' src="images/rightstick.png" alt="sticky">
+    <img class="hid" id="carrot" src="images/carrot.png" alt="sup doc">
+    <img class="hid" id="bottleCap" src="images/bottleCap.png" alt="bepis">
+    <img class="hid" id="grape" src="images/grape.png" alt="caesar">
+    <img class="hid" id="rock" src="images/rock.png" alt="stoned">
+    <form id="viewForm" action="/getSnowmen" class="hid" method="get">
       <select id='urlField'>
         <option value='/getSnowmen'>/getSnowmen</option>
         <option value='/notReal'>/notReal</option>
@@ -260,10 +278,11 @@
         <option value="head">HEAD</option>
       </select>
       <input type="submit" value="View Snowmen"/>
-    </form>
+    </form><br>
+    <button id="prevButton" class="hid">View Previous Snowman</button>
   </section>
   <section id="content">
   </section>
-  <canvas id="snowMan" width="500" height="500"></canvas>
+  <canvas id="snowMan" width="500" height="500" class="hid"></canvas>
 </body>
 </html>

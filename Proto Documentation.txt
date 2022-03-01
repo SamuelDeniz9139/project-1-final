@@ -12,3 +12,10 @@ the user asks to see the snowmen.
 - Made a special function to make the scarf color display. If the scarf
 color was set to "none", no scarf will appear on the snowman.
 - Implemented embedded font that was absent from the prototype.
+
+3/1/2022:
+- Changed the "view" form so that it doesn't initially appear until a
+snowman has been added to the API. This prevents users from looking
+through empty snowman data and throwing an error.
+- The canvas no longer appears until the user asks to see the snowmen.
+- Added a button that lets users view previously created snowmen.
