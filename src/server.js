@@ -30,9 +30,9 @@ const handleGet = (request, response, parsedUrl) => {
   if (newUrl === '/style.css') {
     htmlHandler.getCSS(request, response);
   } else if (newUrl.includes('/images')) {
-    htmlHandler.getImage(request, response, url);
+    htmlHandler.getImage(request, response, newUrl);
   } else if (newUrl.includes('/fonts')) {
-    htmlHandler.getFont(request, response, url);
+    htmlHandler.getFont(request, response, newUrl);
   } else if (newUrl === '/getSnowmen') {
     jsonHandler.getSnowmen(request, response);
   } else {
