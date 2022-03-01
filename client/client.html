@@ -97,7 +97,7 @@
       snowDex -=1;
       if (snowDex < 0){
         snowDex=snowVals.length-1;
-      }
+      }//builds the previously created snowman
       buildSnowman(snowNames[snowDex],snowVals[snowDex]);
     };
     const handleResponse = async (response, parseResponse) => {
@@ -141,13 +141,11 @@
         }
         snowNames=names;
         snowVals=vals;
+        document.getElementById("prevButton").classList.remove("hid");
+        document.getElementById("prevButton").addEventListener("click",prevSnowman);
         if(vals.length!=0){
           snowDex = names.length-1;
           buildSnowman(names[snowDex], vals[snowDex]);
-        }
-        if(snowDex>0){
-          document.getElementById("prevButton").classList.remove("hid");
-          document.getElementById("prevButton").addEventListener("click",prevSnowman);
         }
       }
     };
@@ -283,6 +281,6 @@
   </section>
   <section id="content">
   </section>
-  <canvas id="snowMan" width="500" height="500" class="hid"></canvas>
+  <canvas id="snowMan" class="hid" width="500" height="500"></canvas>
 </body>
 </html>
