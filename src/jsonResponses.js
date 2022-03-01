@@ -42,7 +42,7 @@ const makeSnowman = (request, response, body) => {
 };
 const getSnowmen = (request, response) => {
   const responseJSON = {
-    snowmen
+    snowmen,
   };
   const noSnowmen = {
     message: "You haven't built any snowmen yet.",

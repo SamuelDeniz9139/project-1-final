@@ -28,5 +28,5 @@ module.exports = {
   getIndex,
   getCSS,
   getImage,
-  getFont
+  getFont,
 };

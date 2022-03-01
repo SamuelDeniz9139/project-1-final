@@ -7,7 +7,7 @@ const jsonHandler = require('./jsonResponses.js');
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 const parseBody = (request, response, handler) => {
   const body = [];
-  request.on('error', (err) => {
+  request.on('error', () => {
     response.statusCode = 400;
     response.end();
   });
@@ -26,14 +26,14 @@ const handlePost = (request, response, parsedUrl) => {
   }
 };
 const handleGet = (request, response, parsedUrl) => {
-  let url=parsedUrl.pathname;
-  if (url === '/style.css') {
+  const newUrl = parsedUrl.pathname;
+  if (newUrl === '/style.css') {
     htmlHandler.getCSS(request, response);
-  } else if(url.includes('/images')){
-    htmlHandler.getImage(request,response,url);
-  } else if(url.includes('/fonts')){
-    htmlHandler.getFont(request,response,url);
-  } else if (url === '/getSnowmen') {
+  } else if (newUrl.includes('/images')) {
+    htmlHandler.getImage(request, response, url);
+  } else if (newUrl.includes('/fonts')) {
+    htmlHandler.getFont(request, response, url);
+  } else if (newUrl === '/getSnowmen') {
     jsonHandler.getSnowmen(request, response);
   } else {
     htmlHandler.getIndex(request, response);
